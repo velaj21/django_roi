@@ -1,0 +1,17 @@
+{% extends "hello_django/index.html" %} 
+{% block content %}
+<div class="container text-center">
+  <h2>Create Currency</h2>
+  <form method="post" style="width: 300px; margin: auto">
+    {% csrf_token %} 
+    {% for field in form %}
+    <div class="form-group">
+        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+        {{ field }}
+    </div>
+    {% endfor %}
+    <button class="btn btn-primary" type="submit">Create</button>
+    <button class="btn btn-secondary" type="reset">Reset</button>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "hello_django/index.html" %} {% block content %}
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Country Name</th>
+      <th scope="col">Code</th>
+      <th scope="col">Continent</th>
+      <th scope="col">Created At</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for country in countries %}
+    <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+      <td>{{ country.name|upper }}</td>
+      <td>{{ country.code }}</td>
+      <td>{{ country.continent }}</td>
+      <td>{{ country.created_at }}</td>
+      <td>
+        <a class="btn btn-primary" href="{% url 'edit_country' country.id %}">Edit</a>
+        <a class="btn btn-danger" href="{% url 'delete_country' country.id %}">Delete</a>
+      </td>
+      {% endfor %}
+    </tr>
+  </tbody>
+</table>
+{% endblock %}
